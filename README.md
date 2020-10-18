@@ -27,11 +27,11 @@ You need to configure the config.cfg and pass it the file as attribute
 
 You can obtain your own token Id from: https://panel.neodigit.net/api-consumers 
 
-ie: our token is 1234, and our subdomain is test.mydomain.com 
+ie: our token is 1234, and our subdomain is test.mydomain.com. This file is a YAML file.
 
-* token:1234 
-* my_domain:mydomain.com 
-* my_subdomain:test 
+* token: 1234 
+* my_domain: mydomain.com 
+* my_subdomain: test 
 
 ## Instalation from source
 
