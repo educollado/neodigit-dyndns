@@ -8,6 +8,11 @@
 
 ## TESTING PURPOSES ONLY
 
+## Links
+
+* Github: https://github.com/educollado/neodigit-dyndns
+* Pypi.org: https://pypi.org/project/neodigit-dyndns/
+
 dynamic_dns for Neodigit domains
 
 https://panel.neodigit.net
