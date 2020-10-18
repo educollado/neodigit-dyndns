@@ -51,8 +51,8 @@ def obtain_domain_id(my_subdomain,my_domain,header,domains):
 
 def obtain_my_ip():
     # Obtain my ip using ipfy API
-    #return(json.loads(requests.get('https://api.ipify.org?format=json').text)['ip'])
-    return('8.8.8.8')
+    return(json.loads(requests.get('https://api.ipify.org?format=json').text)['ip'])
+    #return('8.8.8.8')
     
 def update_ip(headers,token,domain_info,current_ip):
     # Update A record in existing DNS entry
