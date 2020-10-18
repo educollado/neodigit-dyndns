@@ -57,7 +57,7 @@ One interesting step is to add to your crontab:
 ```bash
 pip install neodigit-dyndns
 ```
-
+https://pypi.org/project/neodigit-dyndns/
 
 ## Neodigit API
 API Documentation: https://developers.neodigit.net/
