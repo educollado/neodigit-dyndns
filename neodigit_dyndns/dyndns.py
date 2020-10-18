@@ -1,22 +1,14 @@
 import requests
 import json
+import yaml
 
 #Read the config file
 def read_config(file):
     # This funcions reads config.cfg and extracts token, domain and subdomain
-    file  = open(file, "r+") 
-    config = file.read()
-    line = 1
-    for i in config.split('\n'):
-        if len(i)>0:
-            if line == 1:
-                token = (i.split(':')[1])
-            if line == 2:
-                my_domain = (i.split(':')[1])
-            if line == 3:
-                my_subdomain = (i.split(':')[1])
-        line += 1
-    return([token,my_domain,my_subdomain])
+    with open(file) as f:
+        data = yaml.load(f, Loader=yaml.FullLoader)
+        print(data)
+        return(data['token'],data['my_domain'],data['my_subdomain'])
 
 def check_domain_registrar(my_domain,headers,domain):
     # Checks if the domain is in Neodigit and downloads domain list
