@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "neodigit-dyndns"
-version = "0.3.0"
+version = "0.3.1"
 description = "A dynamic DNS client using Neodigit's API"
 authors = ["Eduardo Collado <edu@tecnocratica.net>"]
 readme = "README.md"
