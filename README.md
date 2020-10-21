@@ -7,7 +7,7 @@
 ![Mastodon Follow](https://img.shields.io/mastodon/follow/72314?domain=https%3A%2F%2Fmastodon.social&style=social)
 
 ## TESTING PURPOSES ONLY
-
+[![Open this project in Cloud Shell](http://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/educollado/neodigit-dyndns.git&page=editor&tutorial=README.md)
 ## Links
 
 * Github: https://github.com/educollado/neodigit-dyndns
