@@ -48,5 +48,5 @@ if (domain_info['domain_id'] != None and domain_info['subdomain_id'] != None):
         print("\u2611 Your current IP has not been changed: {}".format(current_ip))
     else:
         print('\u2611 Your old IP {} have been changed to the new one {}'.format(domain_info['subdomain_ip'],current_ip))
-        response = (update_ip(token,domain_info,current_ip))
+        response = (update_ip(headers,token,domain_info,current_ip))
 
