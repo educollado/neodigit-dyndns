@@ -1,18 +1,21 @@
-[tool.poetry]
+[project]
 name = "neodigit-dyndns"
-version = "0.3.2"
+version = "0.3.3"
 description = "A dynamic DNS client using Neodigit's API"
-authors = ["Eduardo Collado <edu@tecnocratica.net>"]
+authors = [{name = "Eduardo Collado", email = "edu@tecnocratica.net"}]
 readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.24.0",
+    "PyYAML>=5.3.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.8"
-requests = "^2.24.0"
-PyYAML = "^5.3.1"
+[project.scripts]
+neodigit-dyndns = "neodigit_dyndns.__main__:main"
 
-[tool.poetry.dev-dependencies]
-pytest = "^5.2"
+[project.urls]
+Homepage = "https://github.com/educollado/neodigit-dyndns"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
