@@ -1,18 +1,19 @@
-# Dynamic DNS with Neodigit's API
+# neodigit-dyndns
 
-![GitHub](https://img.shields.io/github/license/educollado/neodigit-dyndns)
-![GitHub last commit](https://img.shields.io/github/last-commit/educollado/neodigit-dyndns)
-![GitHub repo size](https://img.shields.io/github/repo-size/educollado/neodigit-dyndns)
-![Twitter Follow](https://img.shields.io/twitter/follow/ecollado)
-![Mastodon Follow](https://img.shields.io/mastodon/follow/72314?domain=https%3A%2F%2Fmastodon.social&style=social)
+[![PyPI version](https://img.shields.io/pypi/v/neodigit-dyndns)](https://pypi.org/project/neodigit-dyndns/)
+[![Python](https://img.shields.io/pypi/pyversions/neodigit-dyndns)](https://pypi.org/project/neodigit-dyndns/)
+[![License](https://img.shields.io/github/license/educollado/neodigit-dyndns)](https://github.com/educollado/neodigit-dyndns/blob/main/LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/educollado/neodigit-dyndns)](https://github.com/educollado/neodigit-dyndns/commits/main)
+[![Mastodon](https://img.shields.io/mastodon/follow/72314?domain=https%3A%2F%2Fmastodon.social&style=social)](https://mastodon.social/@ecollado)
 
-Cliente de DNS dinámico para dominios gestionados en [Neodigit](https://panel.neodigit.net). Comprueba tu IP pública y actualiza automáticamente el registro A de tu subdominio.
+Cliente de DNS dinámico para dominios gestionados en [Neodigit](https://panel.neodigit.net). Comprueba tu IP pública y actualiza automáticamente el registro A de tu subdominio cuando cambia.
 
-## Links
+## Inicio rápido
 
-* GitHub: https://github.com/educollado/neodigit-dyndns
-* PyPI: https://pypi.org/project/neodigit-dyndns/
-* API Neodigit: https://developers.neodigit.net/
+```bash
+pip install neodigit-dyndns
+neodigit-dyndns config.yaml
+```
 
 ## Instalación
 
@@ -22,20 +23,19 @@ Cliente de DNS dinámico para dominios gestionados en [Neodigit](https://panel.n
 pip install neodigit-dyndns
 ```
 
-**Desde el código fuente con venv:**
+**Desde el código fuente:**
 
 ```bash
 git clone https://github.com/educollado/neodigit-dyndns.git
 cd neodigit-dyndns
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
 pip install -e .
 ```
 
 ## Configuración
 
-Crea un fichero YAML (por ejemplo `config.yaml`) con las siguientes claves:
+Obtén tu token en [panel.neodigit.net/api-consumers](https://panel.neodigit.net/api-consumers) y crea un fichero YAML:
 
 ```yaml
 token: TU_TOKEN_AQUI
@@ -43,9 +43,10 @@ my_domain: tudominio.com
 my_subdomain: subdominio
 ```
 
-Puedes obtener tu token en: https://panel.neodigit.net/api-consumers
+> [!WARNING]
+> No subas este fichero a un repositorio público.
 
-**Ejemplo:** para actualizar `home.midominio.com`:
+**Ejemplo** — para gestionar `home.midominio.com`:
 
 ```yaml
 token: RgU3dNWT8P4pIq1QZ4UXXXXXXXXXXXXXXXX
@@ -53,37 +54,42 @@ my_domain: midominio.com
 my_subdomain: home
 ```
 
-> **Importante:** no compartas ni subas este fichero a un repositorio público.
-
 ## Uso
-
-```bash
-python -m neodigit_dyndns config.yaml
-```
-
-O si lo instalaste via pip:
 
 ```bash
 neodigit-dyndns config.yaml
 ```
 
+Salida de ejemplo:
+
+```
+☑ Your domain midominio.com is registered in Neodigit
+☑ Your IP has changed from 1.2.3.4 to 5.6.7.8
+```
+
 ## Automatización con cron
 
-Para actualizar la IP cada 15 minutos, añade esta línea a tu crontab (`crontab -e`):
+Para actualizar la IP cada 15 minutos, añade esta línea con `crontab -e`:
 
-```bash
+```
 */15 * * * * neodigit-dyndns /ruta/a/config.yaml >> /var/log/neodigit-dyndns.log 2>&1
 ```
 
-## Comportamiento
+## Cómo funciona
 
-El cliente realiza las siguientes comprobaciones en cada ejecución:
+En cada ejecución el cliente:
 
 1. Verifica que el dominio esté registrado en Neodigit
-2. Obtiene la IP pública actual
+2. Obtiene la IP pública actual (via [ipify](https://www.ipify.org/))
 3. Si el subdominio no existe → lo crea
-4. Si el subdominio ya existe y la IP no ha cambiado → no hace nada
+4. Si la IP no ha cambiado → no hace nada
 5. Si la IP ha cambiado → actualiza el registro A
+
+## Requisitos
+
+- Python 3.8+
+- Dominio registrado y gestionado en [Neodigit](https://panel.neodigit.net)
+- Token de API de Neodigit
 
 ## Licencia
 
